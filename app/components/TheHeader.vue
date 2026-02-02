@@ -2,8 +2,12 @@
     <header class="header">
         <div class="header__top">
             <NuxtLink to="/" class="header__logo">
-                <img src="/logo-star-kids.webp" alt="" class="header__logo-img" />
-                <span>Время Звезд</span>
+                <img
+                    src="/logo-star-kids.webp"
+                    alt=""
+                    class="header__logo-img"
+                />
+                <BrandName />
             </NuxtLink>
         </div>
         <div class="header__divider"></div>
@@ -23,27 +27,32 @@
                     to="/hokkeynaya-shkola"
                     class="header__link"
                     @click="menuOpen = false"
-                    >Сведения об образовательной организации</NuxtLink>
+                    >Сведения об образовательной организации</NuxtLink
+                >
                 <NuxtLink
                     to="/abonementy"
                     class="header__link"
                     @click="menuOpen = false"
-                    >Услуги</NuxtLink>
+                    >Услуги</NuxtLink
+                >
                 <NuxtLink
                     to="/individualnye-trenirovki"
                     class="header__link"
                     @click="menuOpen = false"
-                    >Индивидуальные тренировки</NuxtLink>
+                    >Индивидуальные тренировки</NuxtLink
+                >
                 <NuxtLink
                     to="/trenery"
                     class="header__link"
                     @click="menuOpen = false"
-                    >Тренеры</NuxtLink>
+                    >Тренеры</NuxtLink
+                >
                 <NuxtLink
                     to="/kontakty"
                     class="header__link"
                     @click="menuOpen = false"
-                    >Контакты</NuxtLink>
+                    >Контакты</NuxtLink
+                >
             </nav>
         </div>
     </header>
