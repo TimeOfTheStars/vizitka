@@ -77,9 +77,9 @@
                     >Купить абонемент</NuxtLink
                 >
             </div>
-            <div class="school__media">
+            <!-- <div class="school__media">
                 <div class="media-placeholder">Тут может быть картинка</div>
-            </div>
+            </div> -->
             <h2 class="school__subtitle">
                 Для развития созданы отличные условия:
             </h2>
