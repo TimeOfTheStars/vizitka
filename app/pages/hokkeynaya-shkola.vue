@@ -13,7 +13,7 @@
                 <h2 class="school__subtitle">Основные сведения</h2>
                 <dl class="school__info-list">
                     <dt>Полное и сокращенное наименование</dt>
-                    <dd><BrandName /> (<BrandName />)</dd>
+                    <dd>Автономная некоммерческая физкультурно - спортивная организация «ВРЕМЯ ЗВЕЗД» (АНФСО «ВРЕМЯ ЗВЕЗД»)</dd>
 
                     <dt>Дата создания</dt>
                     <dd>2014 г.</dd>
@@ -77,9 +77,9 @@
                     >Купить абонемент</NuxtLink
                 >
             </div>
-            <div class="school__media">
+            <!-- <div class="school__media">
                 <div class="media-placeholder">Тут может быть картинка</div>
-            </div>
+            </div> -->
             <h2 class="school__subtitle">
                 Для развития созданы отличные условия:
             </h2>

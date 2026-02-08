@@ -14,7 +14,7 @@
                 />
             </div>
             <div class="lions__content">
-                <p class="lions__text">Идет набор игроков 2017 г.р.</p>
+                <p class="lions__text">Продолжается набор детей с 3-х лет и старше </p>
             </div>
             <div class="lions__action">
                 <NuxtLink to="/abonementy" class="btn">Подробнее</NuxtLink>
