@@ -65,11 +65,14 @@ const menuOpen = ref(false)
 
 <style scoped>
 .header {
-    background: #1a1a2e;
+    background: rgba(26, 26, 46, 0.7);
     color: #eee;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
+    width: 100%;
 }
 
 .header__top {
