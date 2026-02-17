@@ -1,5 +1,5 @@
 <template>
-    <header class="header">
+    <header class="header" :class="{ 'header--scrolled': showScrolledStyle }">
         <div class="header__top">
             <NuxtLink to="/" class="header__logo">
                 <img
@@ -15,12 +15,14 @@
             <button
                 type="button"
                 class="header__burger"
+                :class="{ 'header__burger--open': menuOpen }"
                 aria-label="Меню"
                 :aria-expanded="menuOpen"
                 @click="menuOpen = !menuOpen"
             >
-                <span v-if="!menuOpen">menu</span>
-                <span v-else>close</span>
+                <span class="header__burger-line"></span>
+                <span class="header__burger-line"></span>
+                <span class="header__burger-line"></span>
             </button>
             <nav class="header__nav" :class="{ 'header__nav--open': menuOpen }">
                 <NuxtLink
@@ -59,13 +61,35 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
 const menuOpen = ref(false)
+const isScrolled = ref(false)
+
+const isHomePage = computed(() => route.path === '/')
+const showScrolledStyle = computed(() => !isHomePage.value || isScrolled.value)
+
+const scrollThreshold = 20
+
+function onScroll() {
+    isScrolled.value = typeof window !== 'undefined' && window.scrollY > scrollThreshold
+}
+
+onMounted(() => {
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+})
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', onScroll)
+})
 </script>
 
 <style scoped>
 .header {
-    background: rgba(26, 26, 46, 0.7);
+    background: transparent;
     color: #eee;
     position: fixed;
     top: 0;
@@ -73,6 +97,11 @@ const menuOpen = ref(false)
     right: 0;
     z-index: 100;
     width: 100%;
+    transition: background-color 0.2s ease;
+}
+
+.header.header--scrolled {
+    background: rgba(26, 26, 46, 0.7);
 }
 
 .header__top {
@@ -122,13 +151,35 @@ const menuOpen = ref(false)
 
 .header__burger {
     display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
     background: transparent;
-    border: 1px solid #666;
-    color: #fff;
-    padding: 0.5rem 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0;
     cursor: pointer;
     border-radius: 4px;
     flex-shrink: 0;
+}
+.header__burger-line {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #fff;
+    border-radius: 1px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.header__burger--open .header__burger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.header__burger--open .header__burger-line:nth-child(2) {
+    opacity: 0;
+}
+.header__burger--open .header__burger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
 }
 
 .header__nav {
@@ -158,10 +209,11 @@ const menuOpen = ref(false)
     .header__nav-row {
         padding: 0.5rem 1rem 0.75rem 1rem;
         gap: 0.5rem;
+        justify-content: flex-end;
     }
 
     .header__burger {
-        display: block;
+        display: flex;
     }
 
     .header__nav {

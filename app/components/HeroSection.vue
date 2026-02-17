@@ -3,10 +3,16 @@
         <source src="/IMG_5223.mp4" type="video/mp4" />
         Ваш браузер не поддерживает видео
     </video>
+    <div class="hero__overlay" aria-hidden="true"></div>
     <section class="hero">
 
         <div class="hero__inner container">
             <h1 class="hero__title">Стань частью нашей команды!</h1>
+            <img
+                src="/logo-star-kids.webp"
+                alt=""
+                class="hero__league-icon"
+            />
         </div>
     </section>
 </template>
@@ -38,12 +44,16 @@
 
 .hero__overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
+    inset: 0;
     z-index: 2;
+    pointer-events: none;
+    background-color: rgba(0, 25, 80, 0.6);
+    background-image: radial-gradient(
+        circle at center,
+        rgba(255, 255, 255, 0.35) 1px,
+        transparent 1px
+    );
+    background-size: 12px 12px;
 }
 
 .hero__inner {
@@ -60,7 +70,25 @@
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
 }
 
+.hero__league-icon {
+    display: none;
+}
+
 @media (max-width: 600px) {
+    .hero__inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero__league-icon {
+        display: block;
+        order: -1;
+        width: 200px;
+        height: auto;
+        margin: 0 auto 1.25rem;
+    }
+
     .hero__title {
         font-size: 1.75rem;
     }

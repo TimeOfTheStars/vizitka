@@ -22,3 +22,4 @@ logs
 .env
 .env.*
 !.env.example
+assets/IMG_5223.MOV
