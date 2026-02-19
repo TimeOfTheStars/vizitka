@@ -27,8 +27,8 @@
     </form>
     <p v-else class="lead-form__thanks">Спасибо! Ожидайте звонка менеджера.</p>
     <p v-if="!submitted" class="lead-form__disclaimer">
-        Заполняя и отправляя форму, Вы даете Согласие на обработку персональных
-        данных
+        Заполняя и отправляя форму, Вы даете
+        <NuxtLink to="/politika-konfidencialnosti" class="lead-form__disclaimer-link">Согласие на обработку персональных данных</NuxtLink>.
     </p>
 </template>
 
@@ -128,5 +128,9 @@ function onSubmit() {
     margin: 0.5rem 0 0;
     font-size: 0.75rem;
     color: var(--color-text-muted);
+}
+.lead-form__disclaimer-link {
+    color: var(--color-accent);
+    text-decoration: underline;
 }
 </style>
